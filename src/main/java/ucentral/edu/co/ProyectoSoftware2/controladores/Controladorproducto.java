@@ -44,7 +44,7 @@ public class Controladorproducto {
     public String mostrarFormularioEditar(@PathVariable long serial, Model model){
         Proc Proc = new Proc();
         model.addAttribute("producto", servicioProducto.obtenerProducto(serial));
-        return "editar_producto";
+        return "editar_productos";
     }
 
     @PostMapping("/producto/{serial}")
