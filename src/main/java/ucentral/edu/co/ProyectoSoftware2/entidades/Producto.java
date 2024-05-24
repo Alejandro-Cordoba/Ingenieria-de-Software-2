@@ -2,19 +2,20 @@ package ucentral.edu.co.ProyectoSoftware2.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-
+import java.util.HashSet;
+import java.util.Set;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "Producto")
 @Table(name = "PRODUCTOS")
-
-// creacion de la tabla productos
+@Builder
 public class Producto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PRODUCTOS")
@@ -35,6 +36,8 @@ public class Producto implements Serializable {
     private float precio_und;
 
     @Column(name = "PRO_CANTIDAD", nullable = false)
-    private float CANTIDAD;
+    private float cantidad;
 
+    @ManyToMany(mappedBy = "productos")
+    private Set<Venta> ventas = new HashSet<>();
 }
