@@ -21,7 +21,7 @@ public class Proc implements Serializable{
     @NotBlank(message = "La categoria es obligatoria")
     private String  categoria;
     @NotBlank(message = "El precio unitario del producto es obligatorio")
-    private String  Precio_und;
+    private float Precio_und;
     @NotBlank(message = "ELa cantidad del producto es obligatorio")
-    private String  cantidad;
+    private float cantidad;
 }

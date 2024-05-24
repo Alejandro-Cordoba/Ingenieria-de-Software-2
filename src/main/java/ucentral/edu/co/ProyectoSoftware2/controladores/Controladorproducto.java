@@ -8,10 +8,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Log4j2
 @Controller
@@ -22,7 +19,7 @@ public class Controladorproducto {
     Servicios servicioProducto;
 
     @GetMapping({  "/producto"})
-    public String listarEquipos(Model model){
+    public String listarProducto(Model model){
         logger.info("Verificando ");
         model.addAttribute("producto",servicioProducto.obtenerProducto());
         return "producto";
@@ -44,7 +41,7 @@ public class Controladorproducto {
     public String mostrarFormularioEditar(@PathVariable long serial, Model model){
         Proc Proc = new Proc();
         model.addAttribute("producto", servicioProducto.obtenerProducto(serial));
-        return "editar_productos";
+        return "editar_producto";
     }
 
     @PostMapping("/producto/{serial}")
@@ -52,9 +49,9 @@ public class Controladorproducto {
 
 
         model.addAttribute("producto", servicioProducto.actualizar(Proc));
-        return "redirect:/equipos";
+        return "redirect:/producto";
     }
-    @GetMapping("/Producto/{serial}")
+    @GetMapping("/producto/{serial}")
     public String eliminarProducto(@PathVariable long serial){
 
         servicioProducto.eliminar(serial);
